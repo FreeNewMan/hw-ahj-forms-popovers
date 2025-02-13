@@ -1,44 +1,32 @@
-export class Popover {
-    constructor() {
-    }
+// export default class Popover {
 
-    showPopover(caption, message, element) {
+export const showPopover = (caption, message, element) => {
+  const popoverElement = document.createElement('div');
+  popoverElement.classList.add('popover');
 
-       const popoverElement = document.createElement('div');
-       popoverElement.classList.add('popover');
-       
-       const arrow = document.createElement('div');
-       arrow.classList.add('arrow');
-       
-       const pheader = document.createElement('h3');
-       pheader.classList.add('popover-header');
-       pheader.textContent = caption;
-   
-       const pbody = document.createElement('div');
-       pbody.classList.add('popover-body');
-       pbody.textContent = message;
-   
-       popoverElement.appendChild(pheader);
-       popoverElement.appendChild(pbody);
-       popoverElement.appendChild(arrow);
-       
-       document.body.appendChild(popoverElement);
+  const arrow = document.createElement('div');
+  arrow.classList.add('arrow');
 
+  const pheader = document.createElement('h3');
+  pheader.classList.add('popover-header');
+  pheader.textContent = caption;
 
-       const { left, top } = element.getBoundingClientRect();
+  const pbody = document.createElement('div');
+  pbody.classList.add('popover-body');
+  pbody.textContent = message;
 
-       popoverElement.style.left = left + element.offsetWidth / 2 - popoverElement.offsetWidth / 2  + 'px';
-       popoverElement.style.top = top - popoverElement.offsetHeight -10 +'px';
+  popoverElement.appendChild(pheader);
+  popoverElement.appendChild(pbody);
+  popoverElement.appendChild(arrow);
 
-       return popoverElement;
-    }
-  
+  document.body.appendChild(popoverElement);
 
-    removePopover(el) {
-        el.remove();
-    }
+  const { left, top } = element.getBoundingClientRect();
 
+  popoverElement.style.left = `${left + element.offsetWidth / 2 - popoverElement.offsetWidth / 2}px`;
+  popoverElement.style.top = `${top - popoverElement.offsetHeight - 10}px`;
 
-}
+  return popoverElement;
+};
 
-
+export const removePopover = (el) => { el.remove(); };

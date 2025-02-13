@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-describe('Card Form', () => {
+describe('User Form', () => {
   let browser;
   let page;
 
@@ -17,7 +17,7 @@ describe('Card Form', () => {
   test('Form should render on page start', async () => {
     await page.goto('http://localhost:9000');
 
-    await page.waitForTimeout('.cardnumb-form-widget');
+    await page.waitForTimeout('.user-form');
   });
 
   test('Нажимаем на кнопку один раз - показ виджета', async () => {
@@ -33,7 +33,6 @@ describe('Card Form', () => {
     jest.setTimeout(20000);
 
     await page.waitForTimeout('.popover');
-
   });
 
   test('Нажимаем на кнопку два раза - показ и скрытие', async () => {
@@ -51,7 +50,6 @@ describe('Card Form', () => {
     await page.waitForTimeout('.container');
   });
 
-  
   afterEach(async () => {
     await browser.close();
   });
